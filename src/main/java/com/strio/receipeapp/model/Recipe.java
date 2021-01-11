@@ -27,6 +27,12 @@ public class Recipe {
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
+    @ManyToMany
+    @JoinTable(name = "receipe_category",
+     joinColumns = @JoinColumn(name = "receipe_id"),
+    inverseJoinColumns = @JoinColumn(name="category_id"))
+    private Set<Category> categories;
+
     public Long getId() {
         return id;
     }
