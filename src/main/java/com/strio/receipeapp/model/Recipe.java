@@ -1,6 +1,7 @@
 package com.strio.receipeapp.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -11,27 +12,28 @@ public class Recipe {
 
     private String description;
     private int prepTime;
-    private int cookInt;
+    private int cookTime;
     private int serving;
     private String source;
     private String url;
+    @Lob
     private String directions;
     private Difficulty difficulty;
 
     @Lob
     private Byte[] image;
 
-    @OneToMany(cascade = CascadeType.ALL , mappedBy = "recipe")
-    private Set<Ingredient> ingredients;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe", fetch = FetchType.EAGER)
+    private Set<Ingredient> ingredients = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
     @ManyToMany
     @JoinTable(name = "receipe_category",
-     joinColumns = @JoinColumn(name = "receipe_id"),
-    inverseJoinColumns = @JoinColumn(name="category_id"))
-    private Set<Category> categories;
+            joinColumns = @JoinColumn(name = "receipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -57,12 +59,12 @@ public class Recipe {
         this.prepTime = prepTime;
     }
 
-    public int getCookInt() {
-        return cookInt;
+    public int getCookTime() {
+        return cookTime;
     }
 
-    public void setCookInt(int cookInt) {
-        this.cookInt = cookInt;
+    public void setCookTime(int cookInt) {
+        this.cookTime = cookInt;
     }
 
     public int getServing() {
@@ -128,5 +130,13 @@ public class Recipe {
 
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }
