@@ -4,12 +4,14 @@ import com.strio.receipeapp.model.*;
 import com.strio.receipeapp.repository.CategoryRepository;
 import com.strio.receipeapp.repository.RecipeRepository;
 import com.strio.receipeapp.repository.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class BootstrapLoader implements CommandLineRunner {
 
@@ -82,6 +84,7 @@ public class BootstrapLoader implements CommandLineRunner {
         //Serves 6 - 8
         //PreTime 20 mins
         //Cook Time 15 mins
+        log.debug("Adding Grilled chicken Tacos Recipe");
         Recipe tacosRecipe = new Recipe();
         tacosRecipe.setPrepTime(20);
         tacosRecipe.setServing(8);
@@ -137,12 +140,16 @@ public class BootstrapLoader implements CommandLineRunner {
 
         recipeRepository.save(tacosRecipe);
         System.out.println("Recipe in bootstrap " + recipeRepository.count());
+        log.debug("Recipe in bootstrap " + recipeRepository.count());
+
     }
 
     private void loadGuacamoleRecipeRecipe() {
         //Guacamole Recipe
         //Serves 2 - 4
         //PreTime 10 mins
+        log.debug("Adding Guacamole recipe");
+
         Recipe guacamoleRecipe = new Recipe();
         guacamoleRecipe.setPrepTime(10);
         guacamoleRecipe.setCookTime(10);
@@ -199,6 +206,8 @@ public class BootstrapLoader implements CommandLineRunner {
 
         recipeRepository.save(guacamoleRecipe);
         System.out.println("Recipe in bootstrap " + recipeRepository.count());
+        log.debug("Recipe in bootstrap " + recipeRepository.count());
+
         System.out.println("Ingredients in bootstrap " + recipeRepository.findById(1L).get().getIngredients().size());
     }
 
