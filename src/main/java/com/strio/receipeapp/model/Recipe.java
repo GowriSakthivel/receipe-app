@@ -1,6 +1,7 @@
 package com.strio.receipeapp.model;
 
 import lombok.Data;
+import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -32,7 +33,7 @@ public class Recipe {
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "receipe_category",
             joinColumns = @JoinColumn(name = "receipe_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
