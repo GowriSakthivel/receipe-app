@@ -15,7 +15,7 @@ import static org.mockito.Mockito.*;
 
 class RecipeServiceImplTest {
 
-    RecipeServiceImpl recipeService;
+    RecipeServiceImpl recipeServiceImpl;
 
     @Mock
     RecipeRepository recipeRepository;
@@ -23,7 +23,7 @@ class RecipeServiceImplTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeServiceImpl = new RecipeServiceImpl(recipeRepository);
     }
 
     @Test
@@ -34,7 +34,7 @@ class RecipeServiceImplTest {
 
         when(recipeRepository.findAll()).thenReturn(recipeData);
 
-        Set<Recipe> recipes = recipeService.getRecipes();
+        Set<Recipe> recipes = recipeServiceImpl.getRecipes();
         assertEquals(recipes.size(),1);
 
         //Check if the final method from recipeRepository is called oncel
