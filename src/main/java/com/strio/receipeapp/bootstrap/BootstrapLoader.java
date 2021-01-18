@@ -6,6 +6,10 @@ import com.strio.receipeapp.repository.RecipeRepository;
 import com.strio.receipeapp.repository.UnitOfMeasureRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -18,6 +22,7 @@ public class BootstrapLoader implements CommandLineRunner {
     private final RecipeRepository recipeRepository;
     private final CategoryRepository categoryRepository;
     private final UnitOfMeasureRepository unitOfMeasureRepository;
+
     private UnitOfMeasure tblSpoon;
     private UnitOfMeasure teaSpoon;
     private UnitOfMeasure nos;
@@ -32,7 +37,8 @@ public class BootstrapLoader implements CommandLineRunner {
     private Category mexican;
 
 
-    public BootstrapLoader(RecipeRepository recipeRepository, CategoryRepository categoryRepository, UnitOfMeasureRepository unitOfMeasureRepository) {
+    public BootstrapLoader(RecipeRepository recipeRepository, CategoryRepository categoryRepository,
+                           UnitOfMeasureRepository unitOfMeasureRepository) {
         this.recipeRepository = recipeRepository;
         this.categoryRepository = categoryRepository;
         this.unitOfMeasureRepository = unitOfMeasureRepository;

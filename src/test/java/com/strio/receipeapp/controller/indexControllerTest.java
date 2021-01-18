@@ -1,16 +1,13 @@
 package com.strio.receipeapp.controller;
 
 import com.strio.receipeapp.model.Recipe;
-import com.strio.receipeapp.repository.RecipeRepository;
 import com.strio.receipeapp.service.RecipeService;
-import com.strio.receipeapp.service.RecipeServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
@@ -39,7 +36,7 @@ class indexControllerTest {
     }
 
     @Test
-    void testMockMVC() throws Exception {
+    public void testMockMVC() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())

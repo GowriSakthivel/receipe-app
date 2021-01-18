@@ -1,6 +1,5 @@
 package com.strio.receipeapp.repository;
 
-import com.strio.receipeapp.model.Category;
 import com.strio.receipeapp.model.UnitOfMeasure;
 import org.springframework.data.repository.CrudRepository;
 
