@@ -1,7 +1,6 @@
 package com.strio.receipeapp.model;
 
 import lombok.Data;
-import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
 import java.util.HashSet;
