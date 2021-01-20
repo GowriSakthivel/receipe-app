@@ -1,4 +1,4 @@
-package com.strio.receipeapp.commads;
+package com.strio.receipeapp.commands;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class NotesCommand {
+public class CategoryCommand {
     private Long id;
-    private String recipeNotes;
+    private String description;
 }

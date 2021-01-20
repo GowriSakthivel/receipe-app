@@ -1,6 +1,6 @@
 package com.strio.receipeapp.controller;
 
-import com.strio.receipeapp.commads.RecipeCommand;
+import com.strio.receipeapp.commands.RecipeCommand;
 import com.strio.receipeapp.service.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

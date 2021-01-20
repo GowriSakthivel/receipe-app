@@ -1,6 +1,6 @@
 package com.strio.receipeapp.converters;
 
-import com.strio.receipeapp.commads.UnitOfMeasureCommand;
+import com.strio.receipeapp.commands.UnitOfMeasureCommand;
 import com.strio.receipeapp.model.UnitOfMeasure;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;

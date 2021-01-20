@@ -1,6 +1,6 @@
 package com.strio.receipeapp.converters;
 
-import com.strio.receipeapp.commads.CategoryCommand;
+import com.strio.receipeapp.commands.CategoryCommand;
 import com.strio.receipeapp.model.Category;
 import org.junit.jupiter.api.BeforeEach;
 

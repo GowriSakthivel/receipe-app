@@ -1,6 +1,6 @@
 package com.strio.receipeapp.controller;
 
-import com.strio.receipeapp.commads.RecipeCommand;
+import com.strio.receipeapp.commands.RecipeCommand;
 import com.strio.receipeapp.model.Recipe;
 import com.strio.receipeapp.service.RecipeService;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,8 +22,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Created by jt on 6/19/17.
  */
 public class RecipeControllerTest {
-
-
     @Mock
     RecipeService recipeService;
 
@@ -32,7 +30,7 @@ public class RecipeControllerTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
 
         controller = new RecipeController(recipeService);
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();

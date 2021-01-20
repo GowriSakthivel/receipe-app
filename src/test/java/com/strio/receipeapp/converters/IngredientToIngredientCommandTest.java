@@ -1,6 +1,6 @@
 package com.strio.receipeapp.converters;
 
-import com.strio.receipeapp.commads.IngredientCommand;
+import com.strio.receipeapp.commands.IngredientCommand;
 import com.strio.receipeapp.model.Ingredient;
 import com.strio.receipeapp.model.Recipe;
 import com.strio.receipeapp.model.UnitOfMeasure;

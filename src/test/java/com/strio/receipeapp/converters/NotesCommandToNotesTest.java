@@ -1,8 +1,7 @@
 package com.strio.receipeapp.converters;
 
-import com.strio.receipeapp.commads.NotesCommand;
+import com.strio.receipeapp.commands.NotesCommand;
 import com.strio.receipeapp.model.Notes;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

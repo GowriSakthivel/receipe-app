@@ -1,7 +1,7 @@
 package com.strio.receipeapp.converters;
 
-import com.strio.receipeapp.commads.IngredientCommand;
-import com.strio.receipeapp.commads.UnitOfMeasureCommand;
+import com.strio.receipeapp.commands.IngredientCommand;
+import com.strio.receipeapp.commands.UnitOfMeasureCommand;
 import com.strio.receipeapp.model.Ingredient;
 import com.strio.receipeapp.model.Recipe;
 import org.junit.jupiter.api.BeforeEach;

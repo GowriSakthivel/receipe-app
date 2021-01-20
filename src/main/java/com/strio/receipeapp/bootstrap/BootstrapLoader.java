@@ -134,15 +134,15 @@ public class BootstrapLoader implements CommandLineRunner {
         tacosRecipe.addIngredient(new Ingredient("finely grated orange zest", BigDecimal.valueOf(1), tblSpoon));
         tacosRecipe.addIngredient(new Ingredient("fresh-squeezed orange juice", BigDecimal.valueOf(3), tblSpoon));
         tacosRecipe.addIngredient(new Ingredient("olive oil", BigDecimal.valueOf(2), tblSpoon));
-        tacosRecipe.addIngredient( new Ingredient("skinless, boneless chicken thighs", BigDecimal.valueOf(11 / 4), kgs));
+        tacosRecipe.addIngredient(new Ingredient("skinless, boneless chicken thighs", BigDecimal.valueOf(11 / 4), kgs));
         tacosRecipe.addIngredient(new Ingredient("small corn tortillas", BigDecimal.valueOf(8), nos));
         tacosRecipe.addIngredient(new Ingredient("packed baby arugula", BigDecimal.valueOf(3), kgs));
-        tacosRecipe.addIngredient( new Ingredient("medium ripe avocados, sliced", BigDecimal.valueOf(2), nos));
+        tacosRecipe.addIngredient(new Ingredient("medium ripe avocados, sliced", BigDecimal.valueOf(2), nos));
         tacosRecipe.addIngredient(new Ingredient("radishes, thinly sliced", BigDecimal.valueOf(4), nos));
-        tacosRecipe.addIngredient(new Ingredient("pint cherry tomatoes, halved", BigDecimal.valueOf(1/2), pint));
-        tacosRecipe.addIngredient(new Ingredient("red onion, thinly sliced", BigDecimal.valueOf(1/4), nos));
+        tacosRecipe.addIngredient(new Ingredient("pint cherry tomatoes, halved", BigDecimal.valueOf(1 / 2), pint));
+        tacosRecipe.addIngredient(new Ingredient("red onion, thinly sliced", BigDecimal.valueOf(1 / 4), nos));
         tacosRecipe.addIngredient(new Ingredient("Roughly chopped cilantro", BigDecimal.valueOf(1), garnish));
-        tacosRecipe.addIngredient(new Ingredient("cup sour cream thinned with 1/4 cup milk", BigDecimal.valueOf(1/2), cup));
+        tacosRecipe.addIngredient(new Ingredient("cup sour cream thinned with 1/4 cup milk", BigDecimal.valueOf(1 / 2), cup));
 
         recipeRepository.save(tacosRecipe);
         System.out.println("Recipe in bootstrap " + recipeRepository.count());
@@ -202,13 +202,13 @@ public class BootstrapLoader implements CommandLineRunner {
         guacamoleRecipe.addIngredient(new Ingredient("Ripe Avocados", BigDecimal.valueOf(2), nos));
         guacamoleRecipe.addIngredient(new Ingredient("Salt", BigDecimal.valueOf(1 / 4), teaSpoon));
         guacamoleRecipe.addIngredient(new Ingredient("Fresh lime juice or lemon juice", BigDecimal.valueOf(1), tblSpoon));
-        guacamoleRecipe.addIngredient( new Ingredient("minced red onion or thinly sliced green onion", BigDecimal.valueOf(2), tblSpoon));
+        guacamoleRecipe.addIngredient(new Ingredient("minced red onion or thinly sliced green onion", BigDecimal.valueOf(2), tblSpoon));
         guacamoleRecipe.addIngredient(new Ingredient("Serrano chilies, stems and seeds removed, minced", BigDecimal.valueOf(2), nos));
         guacamoleRecipe.addIngredient(new Ingredient("Cilantro (leaves and tender stems), finely chopped", BigDecimal.valueOf(2), tblSpoon));
-        guacamoleRecipe.addIngredient( new Ingredient("A dash of freshly grated black pepper", BigDecimal.valueOf(1), dash));
-        guacamoleRecipe.addIngredient( new Ingredient("Ripe tomato, seeds and pulp removed, chopped", BigDecimal.valueOf(1 / 2), nos));
-        guacamoleRecipe.addIngredient( new Ingredient("Red radishes or jicama, to garnish", BigDecimal.valueOf(1), garnish));
-        guacamoleRecipe.addIngredient( new Ingredient("Tortilla chips, to serve", BigDecimal.valueOf(2), serve));
+        guacamoleRecipe.addIngredient(new Ingredient("A dash of freshly grated black pepper", BigDecimal.valueOf(1), dash));
+        guacamoleRecipe.addIngredient(new Ingredient("Ripe tomato, seeds and pulp removed, chopped", BigDecimal.valueOf(1 / 2), nos));
+        guacamoleRecipe.addIngredient(new Ingredient("Red radishes or jicama, to garnish", BigDecimal.valueOf(1), garnish));
+        guacamoleRecipe.addIngredient(new Ingredient("Tortilla chips, to serve", BigDecimal.valueOf(2), serve));
 
         recipeRepository.save(guacamoleRecipe);
         System.out.println("Recipe in bootstrap " + recipeRepository.count());

@@ -1,6 +1,6 @@
 package com.strio.receipeapp.converters;
 
-import com.strio.receipeapp.commads.UnitOfMeasureCommand;
+import com.strio.receipeapp.commands.UnitOfMeasureCommand;
 import com.strio.receipeapp.model.UnitOfMeasure;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

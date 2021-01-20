@@ -1,13 +1,13 @@
-package com.strio.receipeapp.commads;
+package com.strio.receipeapp.commands;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
-public class UnitOfMeasureCommand {
+public class NotesCommand {
     private Long id;
-    private String description;
+    private String recipeNotes;
 }

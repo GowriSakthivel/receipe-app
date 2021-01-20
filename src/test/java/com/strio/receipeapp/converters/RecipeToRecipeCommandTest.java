@@ -1,9 +1,8 @@
 package com.strio.receipeapp.converters;
 
 
-import com.strio.receipeapp.commads.RecipeCommand;
+import com.strio.receipeapp.commands.RecipeCommand;
 import com.strio.receipeapp.model.*;
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

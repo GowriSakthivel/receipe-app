@@ -1,6 +1,6 @@
 package com.strio.receipeapp.converters;
 
-import com.strio.receipeapp.commads.RecipeCommand;
+import com.strio.receipeapp.commands.RecipeCommand;
 import com.strio.receipeapp.model.Category;
 import com.strio.receipeapp.model.Recipe;
 import lombok.Synchronized;

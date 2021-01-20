@@ -1,4 +1,4 @@
-package com.strio.receipeapp.commads;
+package com.strio.receipeapp.commands;
 
 import com.strio.receipeapp.model.Difficulty;
 import lombok.Getter;

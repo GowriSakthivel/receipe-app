@@ -1,6 +1,6 @@
 package com.strio.receipeapp.converters;
 
-import com.strio.receipeapp.commads.IngredientCommand;
+import com.strio.receipeapp.commands.IngredientCommand;
 import com.strio.receipeapp.model.Ingredient;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.lang.Nullable;

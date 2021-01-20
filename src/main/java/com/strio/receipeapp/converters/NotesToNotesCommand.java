@@ -1,6 +1,6 @@
 package com.strio.receipeapp.converters;
 
-import com.strio.receipeapp.commads.NotesCommand;
+import com.strio.receipeapp.commands.NotesCommand;
 import com.strio.receipeapp.model.Notes;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;

@@ -1,7 +1,7 @@
 package com.strio.receipeapp.converters;
 
 
-import com.strio.receipeapp.commads.CategoryCommand;
+import com.strio.receipeapp.commands.CategoryCommand;
 import com.strio.receipeapp.model.Category;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;

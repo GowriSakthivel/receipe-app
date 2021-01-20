@@ -1,6 +1,6 @@
 package com.strio.receipeapp.service;
 
-import com.strio.receipeapp.commads.RecipeCommand;
+import com.strio.receipeapp.commands.RecipeCommand;
 import com.strio.receipeapp.model.Recipe;
 
 import java.util.Set;

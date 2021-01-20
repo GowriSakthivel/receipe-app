@@ -1,9 +1,9 @@
 package com.strio.receipeapp.converters;
 
-import com.strio.receipeapp.commads.CategoryCommand;
-import com.strio.receipeapp.commads.IngredientCommand;
-import com.strio.receipeapp.commads.NotesCommand;
-import com.strio.receipeapp.commads.RecipeCommand;
+import com.strio.receipeapp.commands.CategoryCommand;
+import com.strio.receipeapp.commands.IngredientCommand;
+import com.strio.receipeapp.commands.NotesCommand;
+import com.strio.receipeapp.commands.RecipeCommand;
 import com.strio.receipeapp.model.Difficulty;
 import com.strio.receipeapp.model.Recipe;
 import org.junit.jupiter.api.BeforeEach;
