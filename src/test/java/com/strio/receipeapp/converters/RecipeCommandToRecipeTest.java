@@ -57,7 +57,7 @@ public class RecipeCommandToRecipeTest {
         recipeCommand.setDescription(DESCRIPTION);
         recipeCommand.setDifficulty(DIFFICULTY);
         recipeCommand.setDirections(DIRECTIONS);
-        recipeCommand.setServings(SERVINGS);
+        recipeCommand.setServing(SERVINGS);
         recipeCommand.setSource(SOURCE);
         recipeCommand.setUrl(URL);
 
