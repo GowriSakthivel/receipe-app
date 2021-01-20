@@ -15,7 +15,7 @@ import java.util.Set;
 
 @Slf4j
 @Service
-public class RecipeServiceImpl implements RecipeService{
+public class RecipeServiceImpl implements RecipeService {
     private final RecipeRepository recipeRepository;
     private final RecipeCommandToRecipe recipeCommandToRecipe;
     private final RecipeToRecipeCommand recipeToRecipeCommand;
@@ -37,9 +37,14 @@ public class RecipeServiceImpl implements RecipeService{
     @Override
     public Recipe findById(Long id) {
         Optional<Recipe> recipeOptional = recipeRepository.findById(id);
-        if(!recipeOptional.isPresent())
+        if (!recipeOptional.isPresent())
             throw new RuntimeException("Recipe not found");
         return recipeOptional.get();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        recipeRepository.deleteById(id);
     }
 
     @Override
