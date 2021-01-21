@@ -17,11 +17,11 @@
             th:src="@{/webjars/bootstrap/4.5.3/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<!--/*@thymesVar id="recipe" type="gcom.strio.receipeapp.model.Recipe"*/-->
+<!--/*@thymesVar id="recipe" type="com.strio.receipeapp.model.Recipe"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form  th:object="${recipe}" th:action="@{/recipe/}"  method="post">
+            <form th:object="${recipe}" th:action="@{/recipe/}" method="post">
                 <input type="hidden" th:field="*{id}"/>
                 <div class="pannel-group">
                     <div class="panel panel-primary">
@@ -32,7 +32,9 @@
                             <div class="row">
                                 <div class="col-md-3 form-group">
                                     <label>Recipe Description:</label>
-                                    <input type="text" class="form-control" th:field="*{description}"/>
+                                    <label>
+                                        <input type="text" class="form-control" th:field="*{description}"/>
+                                    </label>
                                 </div>
                             </div>
                             <div class="row">
@@ -57,33 +59,47 @@
                             <div class="row">
                                 <div class="col-md-3 form-group">
                                     <label>Prep Time:</label>
-                                    <input type="text" class="form-control" th:field="*{prepTime}"/>
+                                    <label>
+                                        <input type="text" class="form-control" th:field="*{prepTime}"/>
+                                    </label>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Cooktime:</label>
-                                    <input type="text" class="form-control" th:field="*{cookTime}"/>
+                                    <label>
+                                        <input type="text" class="form-control" th:field="*{cookTime}"/>
+                                    </label>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Difficulty:</label>
-                                    <select class="form-control">
-                                        <option>Easy</option>
-                                        <option>Medium</option>
-                                        <option>Hard</option>
-                                    </select>
+                                    <label>
+                                        <select class="form-control" th:field="*{difficulty}">
+                                            <option th:each="difficultyValue : ${T(com.strio.receipeapp.model.Difficulty).values()}"
+                                                    th:value="${difficultyValue.name()}"
+                                                    th:text="${difficultyValue.name()}"
+                                            >val
+                                            </option>
+                                        </select>
+                                    </label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3 form-group">
                                     <label>Servings:</label>
-                                    <input type="text" class="form-control" th:field="${recipe.serving}"/>
+                                    <label>
+                                        <input type="text" class="form-control" th:field="${recipe.serving}"/>
+                                    </label>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>Source:</label>
-                                    <input type="text" class="form-control" th:field="*{source}"/>
+                                    <label>
+                                        <input type="text" class="form-control" th:field="*{source}"/>
+                                    </label>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>URL:</label>
-                                    <input type="text" class="form-control" th:field="*{url}"/>
+                                    <label>
+                                        <input type="text" class="form-control" th:field="*{url}"/>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +111,8 @@
                                     <h1 class="panel-title">Ingredients</h1>
                                 </div>
                                 <div class="col-md-1">
-                                    <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">View</a>
+                                    <a class="btn btn-default" href="#"
+                                       th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">View</a>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +139,9 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12 form-group">
-                                    <textarea class="form-control" rows="3" th:field="*{directions}"></textarea></div>
+                                    <label>
+                                        <textarea class="form-control" rows="3" th:field="*{directions}"></textarea>
+                                    </label></div>
                             </div>
                         </div>
                     </div>
@@ -133,7 +152,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12 form-group">
-                                    <textarea class="form-control" rows="3" th:field="*{notes.recipeNotes}"></textarea>
+                                    <textarea class="form-control" rows="3" th:field="*{notes.description}"></textarea>
                                 </div>
                             </div>
                         </div>
