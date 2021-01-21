@@ -46,8 +46,60 @@ class IngredientServiceImplTest {
     }
 
     @Test
-    void findByRecipeIdAndIngredientId() {
+    void testFindByRecipeIdAndIngredientId() {
         //given
+        Optional<Recipe> recipeOptional = getOptionalRecipeWithThreeIngredients();
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        //then
+        IngredientCommand ingredientCommand = ingredientService.findByRecipeIdAndIngredientId(1L, 3L);
+
+        //when
+        assertEquals(Long.valueOf(3L), ingredientCommand.getId());
+        assertEquals(Long.valueOf(1L), ingredientCommand.getRecipeId());
+        verify(recipeRepository, times(1)).findById(anyLong());
+    }
+
+    @Test
+    void saveIngredientCommand() {
+        //given
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        Ingredient ingredient1 = new Ingredient();
+        ingredient1.setId(1L);
+
+        recipe.addIngredient(ingredient1);
+
+        when(recipeRepository.save(any())).thenReturn(recipe);
+
+        //then
+        Recipe savedRecipe = recipeRepository.save(recipe);
+
+        //when
+        assertEquals(Long.valueOf(1L), savedRecipe.getId());
+        verify(recipeRepository, times(1)).save(any());
+    }
+
+    @Test
+    void deleteById() {
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        Ingredient ingredient1 = new Ingredient();
+        ingredient1.setId(2L);
+        recipe.addIngredient(ingredient1);
+
+        when(recipeRepository.findById(anyLong())).thenReturn(Optional.of(recipe));
+
+        ingredientService.deleteById(1L,2L);
+
+       verify(recipeRepository,times(1)).findById(anyLong());
+       verify(recipeRepository,times(1)).save(any(Recipe.class));
+    }
+
+    Optional<Recipe> getOptionalRecipeWithThreeIngredients() {
         Recipe recipe = new Recipe();
         recipe.setId(1L);
 
@@ -63,16 +115,6 @@ class IngredientServiceImplTest {
         recipe.addIngredient(ingredient1);
         recipe.addIngredient(ingredient2);
         recipe.addIngredient(ingredient3);
-        Optional<Recipe> recipeOptional = Optional.of(recipe);
-
-        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
-
-        //then
-        IngredientCommand ingredientCommand = ingredientService.findByRecipeIdAndIngredientId(1L, 3L);
-
-        //when
-        assertEquals(Long.valueOf(3L), ingredientCommand.getId());
-        assertEquals(Long.valueOf(1L), ingredientCommand.getRecipeId());
-        verify(recipeRepository, times(1)).findById(anyLong());
+        return Optional.of(recipe);
     }
 }

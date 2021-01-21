@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @Slf4j
 @Service
-public class IngredientServiceImpl implements IngredientService{
+public class IngredientServiceImpl implements IngredientService {
 
     private final IngredientToIngredientCommand ingredientToIngredientCommand;
     private final RecipeRepository recipeRepository;
@@ -36,7 +36,7 @@ public class IngredientServiceImpl implements IngredientService{
     @Override
     public IngredientCommand findByRecipeIdAndIngredientId(Long recipeId, Long ingredientId) {
         Optional<Recipe> optionalRecipe = recipeRepository.findById(recipeId);
-        if(!optionalRecipe.isPresent()){
+        if (!optionalRecipe.isPresent()) {
             throw new RuntimeException("Recipe not found");
         }
         Recipe recipe = optionalRecipe.get();
@@ -45,7 +45,7 @@ public class IngredientServiceImpl implements IngredientService{
                 .filter(ingredient -> ingredient.getId().equals(ingredientId))
                 .map(ingredientToIngredientCommand::convert).findFirst();
 
-        if(!ingredientCommandOptional.isPresent())
+        if (!ingredientCommandOptional.isPresent())
             throw new RuntimeException("Ingredient is not found");
 
         return ingredientCommandOptional.get();
@@ -57,7 +57,7 @@ public class IngredientServiceImpl implements IngredientService{
     public IngredientCommand saveIngredientCommand(IngredientCommand command) {
         Optional<Recipe> recipeOptional = recipeRepository.findById(command.getRecipeId());
 
-        if(!recipeOptional.isPresent()){
+        if (!recipeOptional.isPresent()) {
             //todo toss error if not found!
             log.error("Recipe not found for id: " + command.getRecipeId());
             return new IngredientCommand();
@@ -70,7 +70,7 @@ public class IngredientServiceImpl implements IngredientService{
                     .filter(ingredient -> ingredient.getId().equals(command.getId()))
                     .findFirst();
 
-            if(ingredientOptional.isPresent()){
+            if (ingredientOptional.isPresent()) {
                 Ingredient ingredientFound = ingredientOptional.get();
                 ingredientFound.setDescription(command.getDescription());
                 ingredientFound.setAmount(command.getAmount());
@@ -91,7 +91,7 @@ public class IngredientServiceImpl implements IngredientService{
                     .filter(recipeIngredients -> recipeIngredients.getId().equals(command.getId()))
                     .findFirst();
 
-            if(!optionalIngredient.isPresent()){
+            if (!optionalIngredient.isPresent()) {
                 optionalIngredient = savedRecipe.getIngredients().stream()
                         .filter(recipeIngredients -> recipeIngredients.getDescription().equals(command.getDescription()))
                         .filter(recipeIngredients -> recipeIngredients.getAmount().equals(command.getAmount()))
@@ -101,6 +101,27 @@ public class IngredientServiceImpl implements IngredientService{
 
             return ingredientToIngredientCommand.convert(optionalIngredient.get());
         }
+    }
 
+    @Override
+    public void deleteById(Long recipeId, Long ingredientId) {
+        Optional<Recipe> optionalRecipe = recipeRepository.findById(recipeId);
+        if (!optionalRecipe.isPresent()) {
+            throw new RuntimeException("Recipe not found");
+        }
+        Recipe recipe = optionalRecipe.get();
+        Optional<Ingredient> ingredientOptional = recipe
+                .getIngredients()
+                .stream()
+                .filter(ingredient -> ingredient.getId().equals(ingredientId))
+                .findFirst();
+
+        if (ingredientOptional.isPresent()) {
+            Ingredient ingredientFound = ingredientOptional.get();
+            ingredientFound.setRecipe(null);
+            recipe.getIngredients().remove(ingredientFound);
+
+            recipeRepository.save(recipe);
+        }
     }
 }
