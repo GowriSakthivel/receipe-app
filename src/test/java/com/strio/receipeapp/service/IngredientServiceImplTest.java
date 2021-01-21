@@ -1,11 +1,14 @@
 package com.strio.receipeapp.service;
 
 import com.strio.receipeapp.commands.IngredientCommand;
+import com.strio.receipeapp.converters.IngredientCommandToIngredient;
 import com.strio.receipeapp.converters.IngredientToIngredientCommand;
+import com.strio.receipeapp.converters.UnitOfMeasureCommandToUnitOfMeasure;
 import com.strio.receipeapp.converters.UnitOfMeasureToUnitOfMeasureCommand;
 import com.strio.receipeapp.model.Ingredient;
 import com.strio.receipeapp.model.Recipe;
 import com.strio.receipeapp.repository.RecipeRepository;
+import com.strio.receipeapp.repository.UnitOfMeasureRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -20,22 +23,26 @@ import static org.mockito.Mockito.*;
 class IngredientServiceImplTest {
 
     private final IngredientToIngredientCommand ingredientToIngredientCommand;
+    private final IngredientCommandToIngredient ingredientCommandToIngredient;
 
     @Mock
     RecipeRepository recipeRepository;
 
     IngredientService ingredientService;
+    @Mock
+    UnitOfMeasureRepository unitOfMeasureRepository;
 
     //init converters
     public IngredientServiceImplTest() {
         this.ingredientToIngredientCommand = new IngredientToIngredientCommand(new UnitOfMeasureToUnitOfMeasureCommand());
+        this.ingredientCommandToIngredient = new IngredientCommandToIngredient(new UnitOfMeasureCommandToUnitOfMeasure());
     }
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, recipeRepository);
+        ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, recipeRepository, unitOfMeasureRepository, ingredientCommandToIngredient);
     }
 
     @Test
