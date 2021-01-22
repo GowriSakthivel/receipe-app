@@ -2,8 +2,10 @@ package com.strio.receipeapp.service;
 
 import com.strio.receipeapp.converters.RecipeCommandToRecipe;
 import com.strio.receipeapp.converters.RecipeToRecipeCommand;
+import com.strio.receipeapp.exceptions.NotFoundException;
 import com.strio.receipeapp.model.Recipe;
 import com.strio.receipeapp.repository.RecipeRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -46,6 +48,16 @@ class RecipeServiceImplTest {
         assertNotNull("Null recipe returned", String.valueOf(recipeReturned));
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, never()).findAll();
+    }
+
+    @Test
+    public void getRecipeByTestNotFound() throws Exception{
+        //We expect this method to throw NotFoundException
+        Optional<Recipe> optionalRecipe = Optional.empty();
+        when(recipeRepository.findById(anyLong())).thenReturn(optionalRecipe);
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            Recipe recipe = recipeServiceImpl.findById(1L);
+        });
     }
 
     @Test

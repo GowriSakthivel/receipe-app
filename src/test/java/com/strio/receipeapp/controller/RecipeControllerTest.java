@@ -1,6 +1,7 @@
 package com.strio.receipeapp.controller;
 
 import com.strio.receipeapp.commands.RecipeCommand;
+import com.strio.receipeapp.exceptions.NotFoundException;
 import com.strio.receipeapp.model.Recipe;
 import com.strio.receipeapp.service.RecipeService;
 import org.junit.jupiter.api.BeforeEach;
@@ -85,5 +86,15 @@ public class RecipeControllerTest {
         verify(recipeService,times(1)).deleteById(anyLong());
     }
 
+    @Test
+    public void testGetRecipeNotFound() throws Exception {
 
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+
+        when(recipeService.findById(anyLong())).thenThrow(NotFoundException.class);
+
+        mockMvc.perform(get("/recipe/1/show"))
+                .andExpect(status().isNotFound());
+    }
 }

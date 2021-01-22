@@ -3,6 +3,7 @@ package com.strio.receipeapp.service;
 import com.strio.receipeapp.commands.RecipeCommand;
 import com.strio.receipeapp.converters.RecipeCommandToRecipe;
 import com.strio.receipeapp.converters.RecipeToRecipeCommand;
+import com.strio.receipeapp.exceptions.NotFoundException;
 import com.strio.receipeapp.model.Recipe;
 import com.strio.receipeapp.repository.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +39,7 @@ public class RecipeServiceImpl implements RecipeService {
     public Recipe findById(Long id) {
         Optional<Recipe> recipeOptional = recipeRepository.findById(id);
         if (!recipeOptional.isPresent())
-            throw new RuntimeException("Recipe not found");
+            throw new NotFoundException("Recipe not found");
         return recipeOptional.get();
     }
 
