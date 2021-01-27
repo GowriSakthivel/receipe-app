@@ -7,13 +7,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 @Controller
 @Slf4j
 public class RecipeController {
 
+    private static final String RECIPE_RECIPEFORM_URL = "recipe/recipeform";
     private final RecipeService recipeService;
 
     public RecipeController(RecipeService recipeService) {
@@ -45,7 +49,13 @@ public class RecipeController {
     }
 
     @PostMapping("recipe")
-    public String saveOrUpdate(@ModelAttribute RecipeCommand recipeCommand) {
+    public String saveOrUpdate(@Valid @ModelAttribute("recipe") RecipeCommand recipeCommand,
+                               BindingResult result) {
+        if(result.hasErrors()){
+            result.getAllErrors().forEach(objectError ->
+                    log.error(objectError.toString()));
+            return RECIPE_RECIPEFORM_URL;
+        }
         RecipeCommand recipeCommand1 = recipeService.saveRecipeCommand(recipeCommand);
         return "redirect:/recipe/" + recipeCommand1.getId() + "/show";
     }
@@ -63,16 +73,4 @@ public class RecipeController {
         return modelAndView;
     }
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(NumberFormatException.class)
-    public ModelAndView handleNumberFormatException(Exception exception){
-        log.error("Handling number format exception");
-        log.error(exception.getMessage());
-
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("exception",exception);
-
-        modelAndView.setViewName("400error");
-        return modelAndView;
-    }
 }
