@@ -22,6 +22,9 @@ jobs:
 
       - run: mvn clean
 
+      - codecov:
+           token: e0fe4370-950f-4220-a478-cd94d41f044f
+           
       # Download and cache dependencies
       - restore_cache:
           keys:
