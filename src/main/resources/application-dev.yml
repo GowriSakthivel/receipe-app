@@ -1,11 +1,22 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/sfg_dev
-    data-username: sfg_dev_user
-    data-password: guru
+    url: jdbc:mysql://localhost:3306/testDB
+    name: testDB
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: test_user
+    password: test
   jpa:
     hibernate:
       ddl-auto: validate
-    database-platform: org.hibernate.dialect.MySQL5InnoDBODialect
+    generate-ddl: true
     database: mysql
     show-sql: true
+    properties:
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+#      javax:
+#        persistence:
+#          schema-generation:
+#            create-source: metadata
+#            scripts:
+#              action: create
+#              create-target: database-create-script.sql
